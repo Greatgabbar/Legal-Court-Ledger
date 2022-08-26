@@ -14,11 +14,12 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react';
 // react plugin used to create charts
-import { Line, Bar, Doughnut } from "react-chartjs-2";
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
 // react plugin for creating vector maps
-import { VectorMap } from "react-jvectormap";
+import { VectorMap } from '@react-jvectormap/core';
+import { inMill } from '@react-jvectormap/india';
 
 // reactstrap components
 import {
@@ -35,8 +36,8 @@ import {
   Table,
   Row,
   Col,
-  UncontrolledTooltip
-} from "reactstrap";
+  UncontrolledTooltip,
+} from 'reactstrap';
 
 import {
   chartExample1,
@@ -46,8 +47,8 @@ import {
   chartExample5,
   chartExample6,
   chartExample7,
-  chartExample8
-} from "variables/charts.js";
+  chartExample8,
+} from 'variables/charts.js';
 
 var mapData = {
   AU: 760,
@@ -60,7 +61,7 @@ var mapData = {
   IN: 200,
   RO: 600,
   RU: 300,
-  US: 2920
+  US: 2920,
 };
 
 function Dashboard() {
@@ -79,8 +80,8 @@ function Dashboard() {
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Capacity</p>
-                      <CardTitle tag="p">150GB</CardTitle>
+                      <p className="card-category">Total Pending Cases</p>
+                      <CardTitle tag="p">+13K</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -106,8 +107,8 @@ function Dashboard() {
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Revenue</p>
-                      <CardTitle tag="p">$ 1,345</CardTitle>
+                      <p className="card-category">Total Cases Solved</p>
+                      <CardTitle tag="p">+21K</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -133,8 +134,8 @@ function Dashboard() {
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Errors</p>
-                      <CardTitle tag="p">23</CardTitle>
+                      <p className="card-category">Total Cases Registered</p>
+                      <CardTitle tag="p">+34K</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -160,8 +161,8 @@ function Dashboard() {
                   </Col>
                   <Col md="8" xs="7">
                     <div className="numbers">
-                      <p className="card-category">Followers</p>
-                      <CardTitle tag="p">+45K</CardTitle>
+                      <p className="card-category">Number of Users</p>
+                      <CardTitle tag="p">+25K</CardTitle>
                       <p />
                     </div>
                   </Col>
@@ -183,7 +184,7 @@ function Dashboard() {
               <CardHeader>
                 <Row>
                   <Col sm="7">
-                    <div className="numbers pull-left">$34,657</div>
+                    <div className="numbers pull-left">4,657</div>
                   </Col>
                   <Col sm="5">
                     <div className="pull-right">
@@ -195,9 +196,7 @@ function Dashboard() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <h6 className="big-title">
-                  total earnings in last ten quarters
-                </h6>
+                <h6 className="big-title">Current active Cases</h6>
                 <Line
                   data={chartExample1.data}
                   options={chartExample1.options}
@@ -209,7 +208,7 @@ function Dashboard() {
                 <hr />
                 <Row>
                   <Col sm="7">
-                    <div className="footer-title">Financial Statistics</div>
+                    <div className="footer-title">Monthly Statistics</div>
                   </Col>
                   <Col sm="5">
                     <div className="pull-right">
@@ -243,9 +242,7 @@ function Dashboard() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <h6 className="big-title">
-                  total subscriptions in last 7 days
-                </h6>
+                <h6 className="big-title">Cases Registered Today</h6>
                 <Line
                   data={chartExample2.data}
                   options={chartExample2.options}
@@ -257,7 +254,7 @@ function Dashboard() {
                 <hr />
                 <Row>
                   <Col sm="7">
-                    <div className="footer-title">View all members</div>
+                    <div className="footer-title">Daily Statistics</div>
                   </Col>
                   <Col sm="5">
                     <div className="pull-right">
@@ -291,7 +288,7 @@ function Dashboard() {
                 </Row>
               </CardHeader>
               <CardBody>
-                <h6 className="big-title">total downloads in last 6 years</h6>
+                <h6 className="big-title">Total Pending cases</h6>
                 <Line
                   data={chartExample3.data}
                   options={chartExample3.options}
@@ -303,7 +300,7 @@ function Dashboard() {
                 <hr />
                 <Row>
                   <Col sm="7">
-                    <div className="footer-title">View more details</div>
+                    <div className="footer-title">Monthly Statistics</div>
                   </Col>
                   <Col sm="5">
                     <div className="pull-right">
@@ -338,7 +335,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/US.png")}
+                                src={require('assets/img/flags/US.png')}
                               />
                             </div>
                           </td>
@@ -351,7 +348,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/DE.png")}
+                                src={require('assets/img/flags/DE.png')}
                               />
                             </div>
                           </td>
@@ -364,7 +361,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/AU.png")}
+                                src={require('assets/img/flags/AU.png')}
                               />
                             </div>
                           </td>
@@ -377,7 +374,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/GB.png")}
+                                src={require('assets/img/flags/GB.png')}
                               />
                             </div>
                           </td>
@@ -390,7 +387,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/RO.png")}
+                                src={require('assets/img/flags/RO.png')}
                               />
                             </div>
                           </td>
@@ -403,7 +400,7 @@ function Dashboard() {
                             <div className="flag">
                               <img
                                 alt="..."
-                                src={require("assets/img/flags/BR.png")}
+                                src={require('assets/img/flags/BR.png')}
                               />
                             </div>
                           </td>
@@ -416,30 +413,30 @@ function Dashboard() {
                   </Col>
                   <Col className="ml-auto mr-auto" md="6">
                     <VectorMap
-                      map={"world_mill"}
+                      map={inMill}
                       backgroundColor="transparent"
                       zoomOnScroll={false}
                       containerStyle={{
-                        height: "300px"
+                        height: '300px',
                       }}
                       containerClassName="map"
                       regionStyle={{
                         initial: {
-                          fill: "#e4e4e4",
-                          "fill-opacity": 0.9,
-                          stroke: "none",
-                          "stroke-width": 0,
-                          "stroke-opacity": 0
-                        }
+                          fill: '#e4e4e4',
+                          'fill-opacity': 0.9,
+                          stroke: 'none',
+                          'stroke-width': 0,
+                          'stroke-opacity': 0,
+                        },
                       }}
                       series={{
                         regions: [
                           {
                             values: mapData,
-                            scale: ["#AAAAAA", "#444444"],
-                            normalizeFunction: "polynomial"
-                          }
-                        ]
+                            scale: ['#AAAAAA', '#444444'],
+                            normalizeFunction: 'polynomial',
+                          },
+                        ],
                       }}
                     />
                   </Col>
@@ -473,7 +470,7 @@ function Dashboard() {
                             <img
                               alt="..."
                               className="img-raised"
-                              src={require("assets/img/faces/ayo-ogunseinde-2.jpg")}
+                              src={require('assets/img/faces/ayo-ogunseinde-2.jpg')}
                             />
                           </div>
                         </td>
@@ -528,7 +525,7 @@ function Dashboard() {
                             <img
                               alt="..."
                               className="img-raised"
-                              src={require("assets/img/faces/erik-lucatero-2.jpg")}
+                              src={require('assets/img/faces/erik-lucatero-2.jpg')}
                             />
                           </div>
                         </td>
@@ -583,7 +580,7 @@ function Dashboard() {
                             <img
                               alt="..."
                               className="img-raised"
-                              src={require("assets/img/faces/kaci-baum-2.jpg")}
+                              src={require('assets/img/faces/kaci-baum-2.jpg')}
                             />
                           </div>
                         </td>
@@ -638,7 +635,7 @@ function Dashboard() {
                             <img
                               alt="..."
                               className="img-raised"
-                              src={require("assets/img/faces/joe-gardner-2.jpg")}
+                              src={require('assets/img/faces/joe-gardner-2.jpg')}
                             />
                           </div>
                         </td>
@@ -726,7 +723,7 @@ function Dashboard() {
                 <CardTitle>Email Statistics</CardTitle>
                 <p className="card-category">Last Campaign Performance</p>
               </CardHeader>
-              <CardBody style={{ height: "253px" }}>
+              <CardBody style={{ height: '253px' }}>
                 <Doughnut
                   data={chartExample5.data}
                   options={chartExample5.options}
@@ -754,7 +751,7 @@ function Dashboard() {
                 <CardTitle>New Visitators</CardTitle>
                 <p className="card-category">Out Of Total Number</p>
               </CardHeader>
-              <CardBody style={{ height: "253px" }}>
+              <CardBody style={{ height: '253px' }}>
                 <Doughnut
                   data={chartExample6.data}
                   options={chartExample6.options}
@@ -782,7 +779,7 @@ function Dashboard() {
                 <CardTitle>Orders</CardTitle>
                 <p className="card-category">Total number</p>
               </CardHeader>
-              <CardBody style={{ height: "253px" }}>
+              <CardBody style={{ height: '253px' }}>
                 <Doughnut
                   data={chartExample7.data}
                   options={chartExample7.options}
@@ -810,7 +807,7 @@ function Dashboard() {
                 <CardTitle>Subscriptions</CardTitle>
                 <p className="card-category">Our Users</p>
               </CardHeader>
-              <CardBody style={{ height: "253px" }}>
+              <CardBody style={{ height: '253px' }}>
                 <Doughnut
                   data={chartExample8.data}
                   options={chartExample8.options}

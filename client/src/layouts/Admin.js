@@ -26,6 +26,7 @@ import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 import Dashboard from "views/Dashboard";
+import ViewCase from "Pages/ViewCase";
 
 var ps;
 
@@ -90,7 +91,10 @@ function Admin(props) {
       />
       <div className="main-panel" ref={mainPanel}>
         <AdminNavbar {...props} handleMiniClick={handleMiniClick} />
-        <Switch>{getRoutes(routes)}</Switch>
+        <Switch>
+          <Route path="/view-cases/:id" component={ViewCase} />
+          {getRoutes(routes)}
+        </Switch>
       </div>
     </div>
   );
