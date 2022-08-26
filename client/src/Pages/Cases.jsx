@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const arr = [
   {
-    caseId: '1',
+    caseId: 'UPHR059364232022',
     name: 'Raja vs Moti',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -14,7 +14,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '2',
+    caseId: 'PUCD909363492022',
     name: 'Abhilaksh vs Shruti ',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -22,7 +22,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '3',
+    caseId: 'APCE032423423434',
     name: 'Sajan vs Sjanaa',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -30,7 +30,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '1',
+    caseId: 'CDHR059313123233',
     name: 'Akshay Khandelwal vs Yoshna ',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -38,7 +38,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '1',
+    caseId: 'HRCE233423423424',
     name: 'Tanmay Dukhija vs Saeed',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -46,7 +46,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '1',
+    caseId: 'DLCE059363492022',
     name: 'Rupali vs Abdul',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -54,7 +54,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: '1',
+    caseId: 'DLCE042342423444',
     name: 'Anmol Tiwari vs Sarthak Gupta',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
