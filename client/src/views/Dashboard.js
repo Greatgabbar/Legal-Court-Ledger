@@ -322,8 +322,8 @@ function Dashboard() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Global Sales by Top Locations</CardTitle>
-                <p className="card-category">All products that were shipped</p>
+                <CardTitle tag="h4">Cases In India</CardTitle>
+                <p className="card-category">All Cases per State</p>
               </CardHeader>
               <CardBody>
                 <Row>
@@ -332,79 +332,79 @@ function Dashboard() {
                       <tbody>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/US.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>USA</td>
-                          <td className="text-right">2.920</td>
-                          <td className="text-right">53.23%</td>
+                          <td>Uttar Pradesh</td>
+                          <td className="text-right">30</td>
+                          <td className="text-right">1.23%</td>
                         </tr>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/DE.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>Germany</td>
-                          <td className="text-right">1.300</td>
-                          <td className="text-right">20.43%</td>
+                          <td>Haryana</td>
+                          <td className="text-right">10</td>
+                          <td className="text-right">2.43%</td>
                         </tr>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/AU.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>Australia</td>
-                          <td className="text-right">760</td>
-                          <td className="text-right">10.35%</td>
+                          <td>Maharashtra</td>
+                          <td className="text-right">70</td>
+                          <td className="text-right">15%</td>
                         </tr>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/GB.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>United Kingdom</td>
-                          <td className="text-right">690</td>
-                          <td className="text-right">7.87%</td>
+                          <td>West Bengal</td>
+                          <td className="text-right">60</td>
+                          <td className="text-right">78%</td>
                         </tr>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/RO.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>Romania</td>
+                          <td>Jammu and Kashmir</td>
                           <td className="text-right">600</td>
                           <td className="text-right">5.94%</td>
                         </tr>
                         <tr>
                           <td>
-                            <div className="flag">
+                            {/* <div className="flag">
                               <img
                                 alt="..."
                                 src={require('assets/img/flags/BR.png')}
                               />
-                            </div>
+                            </div> */}
                           </td>
-                          <td>Brasil</td>
+                          <td>Kerela</td>
                           <td className="text-right">550</td>
                           <td className="text-right">4.34%</td>
                         </tr>
