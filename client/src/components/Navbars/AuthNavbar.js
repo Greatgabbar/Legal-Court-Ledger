@@ -1,19 +1,3 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.3.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import classnames from "classnames";
 import { NavLink } from "react-router-dom";
@@ -25,7 +9,7 @@ import {
   Navbar,
   NavItem,
   Nav,
-  Container
+  Container,
 } from "reactstrap";
 
 function AuthNavbar(props) {
@@ -50,7 +34,7 @@ function AuthNavbar(props) {
       <Container>
         <div className="navbar-wrapper">
           <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
-            Paper Dashboard PRO React
+            Legal Court Ledger
           </NavbarBrand>
         </div>
         <button
@@ -68,12 +52,12 @@ function AuthNavbar(props) {
         </button>
         <Collapse isOpen={collapseOpen} className="justify-content-end" navbar>
           <Nav navbar>
-            <NavItem>
+            {/* <NavItem>
               <NavLink to="/admin/dashboard" className="nav-link">
                 <i className="nc-icon nc-layout-11" />
                 Dashboard
               </NavLink>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <NavLink to="/auth/register" className="nav-link">
                 <i className="nc-icon nc-book-bookmark" />
@@ -86,18 +70,18 @@ function AuthNavbar(props) {
                 Login
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink to="/admin/user-profile" className="nav-link">
                 <i className="nc-icon nc-satisfied" />
                 User
               </NavLink>
-            </NavItem>
-            <NavItem>
+            </NavItem> */}
+            {/* <NavItem>
               <NavLink to="/auth/lock-screen" className="nav-link">
                 <i className="nc-icon nc-key-25" />
                 Lock
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
         </Collapse>
       </Container>

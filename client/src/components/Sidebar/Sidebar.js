@@ -91,7 +91,7 @@ function Sidebar(props) {
       }
       return (
         <li className={activeRoute(prop.layout + prop.path)} key={key}>
-          <NavLink to={prop.layout + prop.path} activeClassName="">
+          <NavLink to={prop.path} activeClassName="">
             {prop.icon !== undefined ? (
               <>
                 <i className={prop.icon} />
@@ -140,61 +140,13 @@ function Sidebar(props) {
       <div className="logo">
         <a
           href="https://www.creative-tim.com"
-          className="simple-text logo-mini"
-        >
-          <div className="logo-img">
-            <img src={logo} alt="react-logo" />
-          </div>
-        </a>
-        <a
-          href="https://www.creative-tim.com"
           className="simple-text logo-normal"
         >
-          Creative Tim
+          Legal Court Ledger
         </a>
       </div>
 
       <div className="sidebar-wrapper" ref={sidebar}>
-        <div className="user">
-          <div className="photo">
-            <img src={avatar} alt="Avatar" />
-          </div>
-          <div className="info">
-            <a
-              href="#pablo"
-              data-toggle="collapse"
-              aria-expanded={openAvatar}
-              onClick={() => setOpenAvatar(!openAvatar)}
-            >
-              <span>
-                Chet Faker
-                <b className="caret" />
-              </span>
-            </a>
-            <Collapse isOpen={openAvatar}>
-              <ul className="nav">
-                <li>
-                  <NavLink to="/admin/user-profile" activeClassName="">
-                    <span className="sidebar-mini-icon">MP</span>
-                    <span className="sidebar-normal">My Profile</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/admin/user-profile" activeClassName="">
-                    <span className="sidebar-mini-icon">EP</span>
-                    <span className="sidebar-normal">Edit Profile</span>
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/admin/user-profile" activeClassName="">
-                    <span className="sidebar-mini-icon">S</span>
-                    <span className="sidebar-normal">Settings</span>
-                  </NavLink>
-                </li>
-              </ul>
-            </Collapse>
-          </div>
-        </div>
         <Nav>{createLinks(props.routes)}</Nav>
       </div>
     </div>

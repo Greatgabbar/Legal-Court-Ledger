@@ -1,20 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.3.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-import React from "react";
+import React, { useState } from "react";
 
 // reactstrap components
 import {
@@ -32,7 +16,7 @@ import {
   InputGroup,
   Container,
   Col,
-  Row
+  Row,
 } from "reactstrap";
 
 function Login() {
@@ -42,6 +26,11 @@ function Login() {
       document.body.classList.toggle("login-page");
     };
   });
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [roles, setRoles] = useState("");
+
   return (
     <div className="login-page">
       <Container>
@@ -61,7 +50,12 @@ function Login() {
                         <i className="nc-icon nc-single-02" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="First Name..." type="text" />
+                    <Input
+                      placeholder="Email..."
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </InputGroup>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
@@ -70,21 +64,31 @@ function Login() {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Password"
+                      placeholder="Enter Password ..."
                       type="password"
-                      autoComplete="off"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </InputGroup>
+                  <InputGroup>
+                    <InputGroupAddon addonType="prepend">
+                      <InputGroupText>
+                        <i className="nc-icon nc-single-02" />
+                      </InputGroupText>
+                    </InputGroupAddon>
+                    <Input
+                      type="select"
+                      name="select"
+                      id="inputState"
+                      value={roles}
+                      onChange={(e) => setRoles(e.target.value)}
+                    >
+                      <option>Judge</option>
+                      <option>lawyer</option>
+                      <option>Admin</option>
+                    </Input>
+                  </InputGroup>
                   <br />
-                  <FormGroup>
-                    <FormGroup check>
-                      <Label check>
-                        <Input defaultChecked defaultValue="" type="checkbox" />
-                        <span className="form-check-sign" />
-                        Subscribe to newsletter
-                      </Label>
-                    </FormGroup>
-                  </FormGroup>
                 </CardBody>
                 <CardFooter>
                   <Button
@@ -92,9 +96,17 @@ function Login() {
                     className="btn-round mb-3"
                     color="warning"
                     href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const data = {
+                        roles,
+                        password,
+                        email,
+                      };
+                      console.log(data);
+                    }}
                   >
-                    Get Started
+                    Login
                   </Button>
                 </CardFooter>
               </Card>
@@ -105,7 +117,7 @@ function Login() {
       <div
         className="full-page-background"
         style={{
-          backgroundImage: `url(${require("assets/img/bg/fabio-mangione.jpg")})`
+          backgroundImage: `url(${require("assets/img/bg/fabio-mangione.jpg")})`,
         }}
       />
     </div>

@@ -34,7 +34,7 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Container
+  Container,
 } from "reactstrap";
 
 function AdminNavbar(props) {
@@ -98,7 +98,7 @@ function AdminNavbar(props) {
             </div>
             <div
               className={classnames("navbar-toggle", {
-                toggled: sidebarOpen
+                toggled: sidebarOpen,
               })}
             >
               <button
@@ -112,10 +112,8 @@ function AdminNavbar(props) {
               </button>
             </div>
             <NavbarBrand href="#pablo" onClick={(e) => e.preventDefault()}>
-              <span className="d-none d-md-block">
-                Paper Dashboard PRO React
-              </span>
-              <span className="d-block d-md-none">PD PRO React</span>
+              <span className="d-none d-md-block"></span>
+              <span className="d-block d-md-none"></span>
             </NavbarBrand>
           </div>
           <button
@@ -123,7 +121,6 @@ function AdminNavbar(props) {
             aria-expanded={collapseOpen}
             aria-label="Toggle navigation"
             className="navbar-toggler"
-            // data-target="#navigation"
             data-toggle="collapse"
             type="button"
             onClick={toggleCollapse}
@@ -169,7 +166,7 @@ function AdminNavbar(props) {
                   id="navbarDropdownMenuLink"
                   nav
                 >
-                  <i className="nc-icon nc-bell-55" />
+                  <i className="nc-icon nc-settings-gear-65" />
                   <p>
                     <span className="d-lg-none d-md-block">Some Actions</span>
                   </p>
@@ -183,34 +180,10 @@ function AdminNavbar(props) {
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}
                   >
-                    Action
-                  </DropdownItem>
-                  <DropdownItem
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    Another action
-                  </DropdownItem>
-                  <DropdownItem
-                    href="#pablo"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    Something else here
+                    Log Out
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              <NavItem>
-                <NavLink
-                  className="btn-rotate"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <i className="nc-icon nc-settings-gear-65" />
-                  <p>
-                    <span className="d-lg-none d-md-block">Account</span>
-                  </p>
-                </NavLink>
-              </NavItem>
             </Nav>
           </Collapse>
         </Container>

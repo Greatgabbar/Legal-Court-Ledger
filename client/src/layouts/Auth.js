@@ -1,28 +1,13 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.3.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch } from "react-router-dom";
 
 import AuthNavbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footer/Footer.js";
 
 import routes from "routes.js";
+import Login from "views/pages/Login";
+import Register from "views/pages/Register";
 
 var ps;
 
@@ -61,8 +46,10 @@ function Pages() {
       <AuthNavbar />
       <div className="wrapper wrapper-full-page" ref={fullPages}>
         <div className="full-page section-image">
-          <Switch>{getRoutes(routes)}</Switch>
-          <Footer fluid />
+          <Switch>
+            <Route path={"/auth/login"} component={Login} />
+            <Route path={"/auth/register"} component={Register} />
+          </Switch>
         </div>
       </div>
     </>

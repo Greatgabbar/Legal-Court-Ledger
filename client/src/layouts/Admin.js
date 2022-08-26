@@ -25,6 +25,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
+import Dashboard from "views/Dashboard";
 
 var ps;
 
@@ -58,14 +59,8 @@ function Admin(props) {
       if (prop.collapse) {
         return getRoutes(prop.views);
       }
-      if (prop.layout === "/admin") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
+      if (prop.layout === "/") {
+        return <Route path={prop.path} component={prop.component} key={key} />;
       } else {
         return null;
       }
@@ -96,21 +91,7 @@ function Admin(props) {
       <div className="main-panel" ref={mainPanel}>
         <AdminNavbar {...props} handleMiniClick={handleMiniClick} />
         <Switch>{getRoutes(routes)}</Switch>
-        {
-          // we don't want the Footer to be rendered on full screen maps page
-          props.location.pathname.indexOf("full-screen-map") !== -1 ? null : (
-            <Footer fluid />
-          )
-        }
       </div>
-      <FixedPlugin
-        bgColor={backgroundColor}
-        activeColor={activeColor}
-        sidebarMini={sidebarMini}
-        handleActiveClick={handleActiveClick}
-        handleBgClick={handleBgClick}
-        handleMiniClick={handleMiniClick}
-      />
     </div>
   );
 }
