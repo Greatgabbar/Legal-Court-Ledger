@@ -61,8 +61,8 @@ const caseSchema = new mongoose.Schema({
   },
   images: [
     {
-      type: String,
-      required: false,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Evidence',
     },
   ],
   lastHearingDate: {
