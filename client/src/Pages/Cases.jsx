@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from './Cases.module.css';
 
-import { Table, Button, UncontrolledTooltip } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {
+  Table,
+  Button,
+  UncontrolledTooltip,
+  Modal,
+  Row,
+  Col,
+  ModalBody,
+  Form,
+  InputGroup,
+  Input,
+  InputGroupAddon,
+  InputGroupText,
+} from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom';
+import useBearStore from 'store';
 
 const arr = [
   {
@@ -64,9 +78,219 @@ const arr = [
 ];
 
 const Cases = () => {
+  const roless = useBearStore((state) => state.roles);
+  let history = useHistory();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [roles, setRoles] = useState('');
+  const [modalNotice, setModalNotice] = React.useState(false);
+  const toggleModalNotice = () => {
+    setModalNotice(!modalNotice);
+  };
   return (
     <div className={classes.container}>
       <h1>Cases Assigned</h1>
+      {roless === 'Admin' && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            margin: '20px',
+          }}
+        >
+          <Button href="#" color="info" onClick={toggleModalNotice}>
+            Add Case
+          </Button>
+
+          <Modal isOpen={modalNotice} toggle={toggleModalNotice}>
+            <div className="modal-header">
+              <button
+                aria-hidden={true}
+                className="close"
+                data-dismiss="modal"
+                type="button"
+                onClick={toggleModalNotice}
+              >
+                <i className="nc-icon nc-simple-remove" />
+              </button>
+              <h5 className="modal-title" id="myModalLabel">
+                Add Case
+              </h5>
+            </div>
+            <div className="modal-body">
+              <Form action="" className="form" method="">
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-single-02" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="title"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-single-02" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="lawyer"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-single-02" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Judge"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-circle-10" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Description"
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-email-85" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Enter Clause (IPC Section)"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-key-25" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Location of Incident"
+                    type="text"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-key-25" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Name Of Accused"
+                    type="text"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-key-25" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Age"
+                    type="text"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-single-02" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    type="select"
+                    name="select"
+                    id="inputState"
+                    value={roles}
+                    onChange={(e) => setRoles(e.target.value)}
+                  >
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Prefer Not to Say</option>
+                  </Input>
+                </InputGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="nc-icon nc-key-25" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="upload evidence"
+                    type="file"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </InputGroup>
+              </Form>
+              <Button
+                className="btn-round"
+                color="info"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const data = {
+                    firstName,
+                    lastName,
+                    roles,
+                    password,
+                    email,
+                  };
+                  console.log(data);
+                  history.push('/auth/login');
+                }}
+              >
+                Register
+              </Button>
+            </div>
+            <div className="modal-footer justify-content-center">
+              <Button
+                className="btn-round"
+                color="info"
+                data-dismiss="modal"
+                type="button"
+                onClick={toggleModalNotice}
+              >
+                Sounds good!
+              </Button>
+            </div>
+          </Modal>
+        </div>
+      )}
       <div className={classes.table}>
         <Table responsive>
           <thead className="text-primary">

@@ -14,9 +14,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
-import classnames from "classnames";
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import classnames from 'classnames';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   Button,
   Collapse,
@@ -35,35 +35,36 @@ import {
   NavLink,
   Nav,
   Container,
-} from "reactstrap";
+} from 'reactstrap';
 
 function AdminNavbar(props) {
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const [color, setColor] = React.useState("navbar-transparent");
+  const [color, setColor] = React.useState('navbar-transparent');
   const location = useLocation();
+  const his = useHistory();
   React.useEffect(() => {
-    window.addEventListener("resize", updateColor);
+    window.addEventListener('resize', updateColor);
   });
   React.useEffect(() => {
     if (
       window.outerWidth < 993 &&
-      document.documentElement.className.indexOf("nav-open") !== -1
+      document.documentElement.className.indexOf('nav-open') !== -1
     ) {
-      document.documentElement.classList.toggle("nav-open");
+      document.documentElement.classList.toggle('nav-open');
     }
   }, [location]);
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   const updateColor = () => {
     if (window.innerWidth < 993 && collapseOpen) {
-      setColor("bg-white");
+      setColor('bg-white');
     } else {
-      setColor("navbar-transparent");
+      setColor('navbar-transparent');
     }
   };
   // this function opens and closes the sidebar on small devices
   const toggleSidebar = () => {
-    document.documentElement.classList.toggle("nav-open");
+    document.documentElement.classList.toggle('nav-open');
     setSidebarOpen(!sidebarOpen);
   };
   // this function opens and closes the collapse on small devices
@@ -71,16 +72,16 @@ function AdminNavbar(props) {
   // ad bg-white when opened
   const toggleCollapse = () => {
     if (!collapseOpen) {
-      setColor("bg-white");
+      setColor('bg-white');
     } else {
-      setColor("navbar-transparent");
+      setColor('navbar-transparent');
     }
     setCollapseOpen(!collapseOpen);
   };
   return (
     <>
       <Navbar
-        className={classnames("navbar-absolute fixed-top", color)}
+        className={classnames('navbar-absolute fixed-top', color)}
         expand="lg"
       >
         <Container fluid>
@@ -97,7 +98,7 @@ function AdminNavbar(props) {
               </Button>
             </div>
             <div
-              className={classnames("navbar-toggle", {
+              className={classnames('navbar-toggle', {
                 toggled: sidebarOpen,
               })}
             >
@@ -178,7 +179,10 @@ function AdminNavbar(props) {
                 >
                   <DropdownItem
                     href="#pablo"
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      his.push('/auth/login');
+                    }}
                   >
                     Log Out
                   </DropdownItem>

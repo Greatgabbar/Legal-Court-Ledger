@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // reactstrap components
 import {
@@ -18,21 +18,22 @@ import {
   Container,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 
 function Register() {
   React.useEffect(() => {
-    document.body.classList.toggle("register-page");
+    document.body.classList.toggle('register-page');
     return function cleanup() {
-      document.body.classList.toggle("register-page");
+      document.body.classList.toggle('register-page');
     };
   });
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [roles, setRoles] = useState("");
+  let history = useHistory();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [roles, setRoles] = useState('');
 
   return (
     <div className="register-page">
@@ -132,6 +133,7 @@ function Register() {
                       email,
                     };
                     console.log(data);
+                    history.push('/auth/login');
                   }}
                 >
                   Register
@@ -144,7 +146,7 @@ function Register() {
       <div
         className="full-page-background"
         style={{
-          backgroundImage: `url(${require("assets/img/bg/jan-sendereks.jpg")})`,
+          backgroundImage: `url("https://blog.ipleaders.in/wp-content/uploads/2020/10/hathoda.jpg")`,
         }}
       />
     </div>

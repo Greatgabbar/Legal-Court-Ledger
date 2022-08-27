@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // reactstrap components
 import {
@@ -17,19 +18,22 @@ import {
   Container,
   Col,
   Row,
-} from "reactstrap";
+} from 'reactstrap';
+import useBearStore from '../../store';
 
 function Login() {
   React.useEffect(() => {
-    document.body.classList.toggle("login-page");
+    document.body.classList.toggle('login-page');
     return function cleanup() {
-      document.body.classList.toggle("login-page");
+      document.body.classList.toggle('login-page');
     };
   });
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [roles, setRoles] = useState("");
+  const setroles = useBearStore((state) => state.setroles);
+  let history = useHistory();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [roles, setRoles] = useState('');
 
   return (
     <div className="login-page">
@@ -103,7 +107,9 @@ function Login() {
                         password,
                         email,
                       };
+                      setroles(roles);
                       console.log(data);
+                      history.push('/');
                     }}
                   >
                     Login
@@ -117,7 +123,7 @@ function Login() {
       <div
         className="full-page-background"
         style={{
-          backgroundImage: `url(${require("assets/img/bg/fabio-mangione.jpg")})`,
+          backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVk7gSWGygf08meFcm7CIIYRuLt36iIm5Oig&usqp=CAU")`,
         }}
       />
     </div>
