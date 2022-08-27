@@ -5,6 +5,7 @@ const Case = require('../models/caseModel');
 const catchAsync = require('../utils/catchAsync');
 
 const { cloudinary, deleteProductImage } = require('../utils/cloudinaryUpload');
+const Evidence = require('../models/evidenceModel');
 
 const multerFilter = (req, file, callback) => {
   if (file.mimetype.startsWith('image')) {
@@ -36,7 +37,14 @@ exports.addCase = handlerFactory.createOne(Case);
 
 exports.addEvidence = catchAsync(async (req, res, next) => {
     const caseDetails = await Case.findById(req.params.id);
-    caseDetails.images.push(req.file.path);
+    
+    const evidence = await Evidence.create({
+      title: req.body.title,
+      des: req.body.des,
+      file: req.file.path,
+    });
+
+    caseDetails.images.push(evidence._id);
 
     await caseDetails.save({ validateBeforeSave: false });
 
