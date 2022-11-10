@@ -83,7 +83,6 @@ try{
 app.use('/', basicRouter);
 app.use('/api/users', userRouter);
 app.use('/api/cases', require('./routes/caseRoute'));
-
 // this will run after all the routes defined by us for this applications are checked and none is matched
 // therefore it is placed at end of app.js
 app.all('*', (req, res, next) => {

@@ -1,8 +1,11 @@
 const express = require('express');
 const authController = require('../controllers/authController');
 const caseController = require('../controllers/caseController');
+const testController = require('../controllers/testController');
 
 const router = express.Router();
+
+router.route('/pincap').post(testController.upload.single('evidence'), testController.testPinata);
 
 router.route('/case/:id').get(authController.protect, caseController.getCase);
 
