@@ -20,15 +20,6 @@ const Evidence = require('../models/evidenceModel');
 //   }
 // };
 
-// const storage = new CloudinaryStorage({
-//   cloudinary: cloudinary,
-//   params: {
-//     public_id: (req, file) =>
-//       `${file.originalname.split('.')[0]}-${Date.now()}`,
-//     folder: 'ledger',
-//   },
-// });
-
 const storage = multer.memoryStorage();
 exports.uploadEvidence = multer({
   storage,
@@ -61,7 +52,7 @@ exports.addEvidence = catchAsync(async (req, res, next) => {
   };
 
   const response = await axios(config);
-  console.log(response);
+  // console.log(response);
 
   const pinataFile = `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`; 
 
@@ -82,7 +73,11 @@ exports.addEvidence = catchAsync(async (req, res, next) => {
     },
   });
 }catch(err){
-  console.log(err);
+  if(err.response.data.error.reason === 'MAX_USES_EXCEEDED'){
+    console.log("EXTERNAL_ERROR : The usage limit for this key has already been reached");
+  }else{
+    console.log(err);
+  }
 }
 });
 
