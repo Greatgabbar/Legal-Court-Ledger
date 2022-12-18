@@ -48,7 +48,11 @@ contract Case {
     mapping(address => lawyer) addr_to_lawyer;
     mapping(address => judge) addr_to_judge;
     mapping(address => admin) addr_to_admin;
-    
+
+    function testContract() view public returns (string memory) {
+        return "test";
+    }
+
     function getCaseUser( string memory id) view public returns ( string memory, string memory, address, string memory, string memory){
         return ( id_to_case[id].name,id_to_case[id].id,id_to_case[id].admin,id_to_case[id].lawyers,id_to_case[id].judge);
     }
@@ -85,7 +89,7 @@ contract Case {
         judgeList.push(id);
     }
     function addCase(string memory id, string memory name, string memory lawyer, string memory date,string memory accused, string memory rep, string memory hearingDate) public {
-        require(msg.sender == owner );
+        // require(msg.sender == owner );
         
         legal_case memory c;
         c.admin = owner;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
 import { Route, Switch } from "react-router-dom";
@@ -8,10 +8,12 @@ import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import routes from "routes.js";
 import Login from "views/pages/Login";
 import Register from "views/pages/Register";
+import { UserContext } from "context/UserContext";
 
 var ps;
 
 function Pages() {
+
   const fullPages = React.useRef();
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {

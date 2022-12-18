@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // reactstrap components
@@ -20,8 +20,13 @@ import {
   Row,
 } from 'reactstrap';
 import useBearStore from '../../store';
+import { UserContext } from 'context/UserContext';
 
 function Login() {
+  const {
+    connectWallet
+  } = useContext(UserContext);
+
   React.useEffect(() => {
     document.body.classList.toggle('login-page');
     return function cleanup() {
@@ -102,6 +107,7 @@ function Login() {
                     href="#pablo"
                     onClick={(e) => {
                       e.preventDefault();
+                      connectWallet();
                       const data = {
                         roles,
                         password,
