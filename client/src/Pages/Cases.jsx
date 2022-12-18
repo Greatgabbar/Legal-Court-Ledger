@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import classes from './Cases.module.css';
 
 import {
@@ -17,6 +17,7 @@ import {
 } from 'reactstrap';
 import { Link, useHistory } from 'react-router-dom';
 import useBearStore from 'store';
+import { UserContext } from 'context/UserContext';
 
 const arr = [
   {
@@ -68,7 +69,7 @@ const arr = [
     caseStatus: 'pending',
   },
   {
-    caseId: 'DLCE042342423444',
+    caseId: 'DLCE0423',
     name: 'Anmol Tiwari vs Sarthak Gupta',
     judge: 'Shubham Trivedi',
     lawyer: 'Akshat Gupta',
@@ -78,6 +79,7 @@ const arr = [
 ];
 
 const Cases = () => {
+  const {makeTransaction} = useContext(UserContext);
   const roless = useBearStore((state) => state.roles);
   let history = useHistory();
   const [firstName, setFirstName] = useState('');
@@ -130,8 +132,8 @@ const Cases = () => {
                   <Input
                     placeholder="title"
                     type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    // value={firstName}
+                    // onChange={(e) => setFirstName(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -143,8 +145,8 @@ const Cases = () => {
                   <Input
                     placeholder="lawyer"
                     type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    // value={firstName}
+                    // onChange={(e) => setFirstName(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -156,8 +158,8 @@ const Cases = () => {
                   <Input
                     placeholder="Judge"
                     type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    // value={firstName}
+                    // onChange={(e) => setFirstName(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -169,8 +171,8 @@ const Cases = () => {
                   <Input
                     placeholder="Description"
                     type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    // value={lastName}
+                    // onChange={(e) => setLastName(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -182,8 +184,8 @@ const Cases = () => {
                   <Input
                     placeholder="Enter Clause (IPC Section)"
                     type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    // value={email}
+                    // onChange={(e) => setEmail(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -195,8 +197,8 @@ const Cases = () => {
                   <Input
                     placeholder="Location of Incident"
                     type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    // value={password}
+                    // onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -208,8 +210,8 @@ const Cases = () => {
                   <Input
                     placeholder="Name Of Accused"
                     type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    // value={password}
+                    // onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -221,8 +223,8 @@ const Cases = () => {
                   <Input
                     placeholder="Age"
                     type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    // value={password}
+                    // onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
                 <InputGroup>
@@ -235,8 +237,8 @@ const Cases = () => {
                     type="select"
                     name="select"
                     id="inputState"
-                    value={roles}
-                    onChange={(e) => setRoles(e.target.value)}
+                    // value={roles}
+                    // onChange={(e) => setRoles(e.target.value)}
                   >
                     <option>Male</option>
                     <option>Female</option>
@@ -252,8 +254,8 @@ const Cases = () => {
                   <Input
                     placeholder="upload evidence"
                     type="file"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    // value={password}
+                    // onChange={(e) => setPassword(e.target.value)}
                   />
                 </InputGroup>
               </Form>
@@ -271,7 +273,9 @@ const Cases = () => {
                     email,
                   };
                   console.log(data);
-                  history.push('/auth/login');
+                  setModalNotice(false);
+                  makeTransaction("DLERC0423",'Akshat','0xD1cF8530E688159aCD7cc7D5F3Dd1D02FB41d3d3','12322','Shubham Trivedi','Akshat','15322');
+                  // history.push('/view-cases');
                 }}
               >
                 Register

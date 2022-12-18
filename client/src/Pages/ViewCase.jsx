@@ -21,7 +21,10 @@ import {
 } from 'reactstrap';
 import Evidence from './Evidence';
 import useBearStore from 'store';
+import { useContext } from 'react';
+import { UserContext } from 'context/UserContext';
 const ViewCase = () => {
+  const {uploadEvidenceGan} = useContext(UserContext);
   const roless = useBearStore((state) => state.roles);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -36,35 +39,35 @@ const ViewCase = () => {
       type: 'file',
       link: 'https://google.com',
       date: '12/08/2022',
-      hash: '31233gyu13ugy1312',
+      hash: 'QmWpjXZZ4NFnqinuzhmYxnU9XcfR5nicydMomsQCvREbXc',
     },
     {
       id: 2,
       type: 'image',
       link: 'https://google.com',
       date: '12/08/2022',
-      hash: '89th4ubt3uhgbg4g',
+      hash: 'QmUeBWmGK68ocrpZ7E7Baz6xz9MvQku7SzPtfzLbXuMPYB',
     },
     {
       id: 3,
       type: 'mp3',
       link: 'https://google.com',
       date: '12/08/2022',
-      hash: '90ripugb8422903323k3',
+      hash: 'QmWpjXZZ4NFnqinuzhmYxnU9XcfR5nicydMomsQCvREbXc',
     },
     {
       id: 4,
       type: 'file',
       link: 'https://google.com',
       date: '12/08/2022',
-      hash: '232fh39fb34fb349ff34',
+      hash: 'QmbD9xcKJXgaxLGLBRc23c21cRowBFDhA7Bf9VnLwnMXAC',
     },
     {
       id: 5,
       type: 'file',
       link: 'https://google.com',
       date: '12/08/2022',
-      hash: 't276t8r3fv34fvbuifiu3',
+      hash: 'QmZnb22UWTqWRidVpW2tt5V1wfAxYpyM6KvE2VM8TaUV7N',
     },
   ];
 
@@ -163,7 +166,9 @@ const ViewCase = () => {
                 email,
               };
               console.log(data);
-              history.push('/auth/login');
+              setModalNotice(false);
+              uploadEvidenceGan("DLERC0423",'Akshat','0xD1cF8530E688159aCD7cc7D5F3Dd1D02FB41d3d3','12322','QmWpjXZZ4NFnqinuzhmYxnU9XcfR5nicydMomsQCvREbXc',4,'unsolved','Shubham Trivedi');
+              // history.push('/auth/login');
             }}
           >
             Upload

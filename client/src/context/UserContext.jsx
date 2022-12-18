@@ -21,10 +21,10 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-//   const getEthereumContract = () => {
-    
-//     return caseContract;
-//   }
+  //   const getEthereumContract = () => {
+
+  //     return caseContract;
+  //   }
 
   const connectWallet = async () => {
     try {
@@ -33,29 +33,91 @@ export const UserContextProvider = ({ children }) => {
       const accounts = await web3.eth.requestAccounts();
       setConnectedAccount(accounts[0]);
       console.log(contractAddress);
+      alert('Account connected');
 
       const caseContract = new web3.eth.Contract(contractABI, contractAddress);
 
-console.log("1")
-// let tr = await caseContract.methods.addCase("wer",'snehil','0xD1cF8530E688159aCD7cc7D5F3Dd1D02FB41d3d3','12322','chupa','rupa','15322').send({from: "0xeE85657EA27e5D975B02EA6251882EE007c56719"}).then(function(receipt) {
-//   console.log('akshat');
-// })
-let tri = await caseContract.methods.getCaseDetails("wer").send({from: "0xeE85657EA27e5D975B02EA6251882EE007c56719"}).then(function(receipt) {
-  console.log('akshat');
-})
-console.log(tri);
-const a = 
-await caseContract.methods.testContract().send({from: "0xeE85657EA27e5D975B02EA6251882EE007c56719"}, function(error,result) {
-  console.log(result);
-});
-console.log("2",a)
-    // console.log(tr);
-    // const accounts = await ethereum.request({
-    //     method: 'eth_requestAccounts',
-    //   });
+      const a = await caseContract.methods
+        .testContract()
+        .send(
+          { from: connectedAccount },
+          function (error, result) {
+            console.log(result);
+          }
+        );
+    } catch (err) {
+      console.log(err);
 
-      
-      // console.log(connectedAccount);
+      throw new Error('No Ethereum accounts!!');
+    }
+  };
+
+  const makeTransaction = async (
+    id,
+    name,
+    lawyer,
+    date,
+    accused,
+    rep,
+    hearDate
+  ) => {
+    try {
+      if (!ethereum) return alert('Install Metamask');
+      const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+      const accounts = await web3.eth.requestAccounts();
+      setConnectedAccount(accounts[0]);
+      console.log(contractAddress);
+      // alert('Account connected');
+
+      const caseContract = new web3.eth.Contract(contractABI, contractAddress);
+
+      let tr = await caseContract.methods
+        .addCase(id, name, lawyer, date, accused, rep, hearDate)
+        .send({ from: connectedAccount })
+        .then(function (receipt) {
+          console.log('akshat');
+        });
+    } catch (err) {
+      console.log(err);
+
+      throw new Error('No Ethereum accounts!!');
+    }
+  };
+
+  const uploadEvidenceGan = async (
+    id,
+    name,
+    lawyer,
+    date,
+    file,
+    severity,
+    verdict,
+    judge
+  ) => {
+    try {
+      if (!ethereum) return alert('Install Metamask');
+      const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+      const accounts = await web3.eth.requestAccounts();
+      setConnectedAccount(accounts[0]);
+      console.log(contractAddress);
+      // alert('Account connected');
+
+      const caseContract = new web3.eth.Contract(contractABI, contractAddress);
+
+      let tr = await caseContract.methods
+        .modifyCase(id, name, lawyer, date, file, severity, verdict, judge)
+        .send({ from: '0xeE85657EA27e5D975B02EA6251882EE007c56719' })
+        .then(function (receipt) {
+          console.log('akshat');
+        });
+
+      let tri = await caseContract.methods
+        .getCaseDetails('DLERC0423')
+        .send({ from: connectedAccount })
+        .then(function (receipt) {
+          console.log('aksh', receipt);
+        });
+      console.log(tri);
     } catch (err) {
       console.log(err);
 
@@ -68,7 +130,14 @@ console.log("2",a)
   }, []);
 
   return (
-    <UserContext.Provider value={{ connectWallet, connectedAccount }}>
+    <UserContext.Provider
+      value={{
+        connectWallet,
+        connectedAccount,
+        makeTransaction,
+        uploadEvidenceGan,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

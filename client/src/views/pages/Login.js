@@ -60,32 +60,6 @@ function Login() {
                       </InputGroupText>
                     </InputGroupAddon>
                     <Input
-                      placeholder="Email..."
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </InputGroup>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="nc-icon nc-key-25" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input
-                      placeholder="Enter Password ..."
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </InputGroup>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend">
-                      <InputGroupText>
-                        <i className="nc-icon nc-single-02" />
-                      </InputGroupText>
-                    </InputGroupAddon>
-                    <Input
                       type="select"
                       name="select"
                       id="inputState"
@@ -118,7 +92,7 @@ function Login() {
                       history.push('/');
                     }}
                   >
-                    Login
+                    Login with Metamask
                   </Button>
                 </CardFooter>
               </Card>
